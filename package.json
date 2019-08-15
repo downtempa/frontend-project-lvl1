@@ -1,0 +1,23 @@
+{
+  "name": "sr-mistyukov-brain-games",
+  "version": "1.0.0",
+  "description": "First Hexlet project",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/downtempa/frontend-project-lvl1.git"
+  },
+  "keywords": [
+    "Hexlet",
+    "brain-games"
+  ],
+  "author": "Leonid Mistyukov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/downtempa/frontend-project-lvl1/issues"
+  },
+  "homepage": "https://github.com/downtempa/frontend-project-lvl1#readme"
+}
