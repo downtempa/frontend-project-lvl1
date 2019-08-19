@@ -1,44 +1,61 @@
 import readlineSync from 'readline-sync';
 
-const showDescription = () => console.log('Welcome to the Brain Games!\n Answer "yes" if number even otherwise answer "no".');
+const showDescription = () => console.log('Welcome to the Brain Games!\nAnswer "yes" if number even otherwise answer "no".\n');
 const getName = () => readlineSync.question('May I have your name? ');
-const sayHello = (name) => console.log(`Hello, ${name}!`);
-const showResultMess = (result, name) => {
-  return result ? 'Correct!' : `'yes' is wrong answer ;(. Correct answer was 'no'.\n Let's try again, ${name}!`
+const sayHello = (name) => console.log(`Hello, ${name}!\n`);
+const showQuestion = (number) => console.log(`Question: ${number}`);
+const showResultMessage = (resultObj, name) => {
+  if (resultObj.result) {
+    console.log('Correct!');
+  } else {
+    console.log(`'${resultObj.answer}' is wrong answer ;(. Correct answer was '${resultObj.correctAnswer}'.\nLet's try again, ${name}!`);
+  }
 };
 
 const isEven = (number) => number % 2 === 0;
-const isCorrectAnswer = (number, answer) => {
-  return isEven(number) && answer === 'yes' || !isEven(number) && answer === 'no';
-}
 
-const getRandomInt = (min, max) => {
-  return Math.floor(Math.random() * (max - min)) + min;
-}
+const isCorrectAnswer = (number, answer) => {
+  const result = (isEven(number) && answer === 'yes') || (!isEven(number) && answer === 'no');
+  return {
+    result,
+    answer,
+    correctAnswer: isEven(number) ? 'yes' : 'no',
+  };
+};
+
+const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
+const showCongratulations = (name) => console.log(`Congratulations, ${name}!`);
 
 const defaultOptions = {
   minIntVal: 1,
   maxIntVal: 100,
-  playTimes: 3
+  playTimes: 3,
 };
 
-export default (options) => {
-  const minIntVal = options.minIntVal || defaultOptions.minIntVal;
-  const maxIntVal = options.maxIntVal || defaultOptions.maxIntVal;
-  const playTimes = options.playTimes || defaultOptions.playTimes;
+export default () => {
+  const { minIntVal, maxIntVal, playTimes } = defaultOptions;
 
   showDescription();
   const userName = getName();
-  sayHello();
+  sayHello(userName);
 
-  const engine = () => {
+  const play = (attempt) => {
+    if (attempt < 1) {
+      showCongratulations(userName);
+      return true;
+    }
+
     const number = getRandomInt(minIntVal, maxIntVal);
-    console.log(`Question: ${number}`);
+    showQuestion(number);
     const answer = readlineSync.question('Your answer: ');
-    const result = isCorrectAnswer(number, answer);
-    showResultMess(result);
-    
-  }
+    const resultObj = isCorrectAnswer(number, answer);
+    showResultMessage(resultObj, userName);
+    if (resultObj.result) {
+      return play(attempt - 1);
+    }
 
-  engine(playTimes);
+    return false;
+  };
+
+  return play(playTimes);
 };
