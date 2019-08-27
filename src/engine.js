@@ -23,12 +23,12 @@ export default (gameName) => {
       return true;
     }
 
-    game.showQuestion();
+    const question = game.showQuestion();
     const answer = print.getAnswer();
-    const result = game.getResult(game.question, answer, userName);
-    game.showAnswer(result.isCorrectAnswer);
+    const result = game.getResult(question, answer, userName);
+    game.showAnswer(result);
 
-    if (result) {
+    if (result.isCorrectAnswer) {
       return player(attempt - 1);
     }
 

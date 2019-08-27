@@ -5,9 +5,11 @@ const description = 'Answer "yes" if number even otherwise answer "no"';
 
 const showDescription = () => print.showDescription(description);
 
-const questionTask = util.getRandomInt(1, 100);
-
-const showQuestion = () => print.showQuestion(questionTask);
+const showQuestion = () => {
+  const question = util.getRandomInt(1, 100);
+  print.showQuestion(question);
+  return question;
+};
 
 const getCorrectAnswer = (gameQuestion) => (util.isEven(gameQuestion) ? 'yes' : 'no');
 
