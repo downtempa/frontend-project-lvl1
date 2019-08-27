@@ -10,11 +10,11 @@ const showQuestion = (question) => console.log(`Question: ${question}`);
 
 const getAnswer = () => readlineSync.question('Your answer: ');
 
-const showResultMessage = (result, trueAnswer, falseAnswer, name) => {
-  if (result) {
+const showResultMessage = (resultObj) => {
+  if (resultObj.isCorrectAnswer) {
     console.log('Correct!');
   } else {
-    console.log(`'${falseAnswer}' is wrong answer ;(. Correct answer was '${trueAnswer}'.\nLet's try again, ${name}!`);
+    console.log(`'${resultObj.userAnswer}' is wrong answer ;(. Correct answer was '${resultObj.correctAnswer}'.\nLet's try again, ${resultObj.name}!`);
   }
 };
 

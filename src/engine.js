@@ -9,8 +9,10 @@ const gameHandlers = {
   'brain-calc': brainCalc,
 };
 
+const getGame = (gameName) => gameHandlers[gameName];
+
 export default (gameName) => {
-  const game = gameHandlers[gameName];
+  const game = getGame(gameName);
   game.showDescription();
   const userName = print.getName();
   print.sayHello(userName);
@@ -23,8 +25,8 @@ export default (gameName) => {
 
     game.showQuestion();
     const answer = print.getAnswer();
-    const result = game.checkAnswer(game.question, answer);
-    game.showAnswer(result);
+    const result = game.getResult(game.question, answer, userName);
+    game.showAnswer(result.isCorrectAnswer);
 
     if (result) {
       return player(attempt - 1);
