@@ -1,7 +1,7 @@
 import * as print from '../print';
 import * as util from '../util';
 
-const description = 'Answer "yes" if number even otherwise answer "no"';
+const description = 'Answer "yes" if number even, otherwise answer "no"';
 
 const showDescription = () => print.showDescription(description);
 
