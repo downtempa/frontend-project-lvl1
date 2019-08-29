@@ -25,6 +25,14 @@ const getRandomOperation = (operations) => _.sample(operations);
 
 const getExpression = (operation) => (a, b) => operation(a, b);
 
+const getGreaterCommonDivisor = (a, b) => {
+  if (!b) {
+    return a;
+  }
+
+  return getGreaterCommonDivisor(b, a % b);
+};
+
 export {
   isEven,
   getRandomInt,
@@ -32,4 +40,5 @@ export {
   getRandomOperation,
   operationsArr,
   operationsMap,
+  getGreaterCommonDivisor,
 };
