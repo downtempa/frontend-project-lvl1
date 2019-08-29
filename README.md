@@ -4,3 +4,5 @@
 [![Build Status](https://travis-ci.org/downtempa/frontend-project-lvl1.svg?branch=master)](https://travis-ci.org/downtempa/frontend-project-lvl1)
 ## brain-even
 [![asciicast](https://asciinema.org/a/VpqKCBRWWZtOxKhhEXVMAVExg.svg)](https://asciinema.org/a/VpqKCBRWWZtOxKhhEXVMAVExg)
+## brain-calc
+[![asciicast](https://asciinema.org/a/NCcVLyzEoRjqWowwHI7qF0aRX.svg)](https://asciinema.org/a/NCcVLyzEoRjqWowwHI7qF0aRX)
