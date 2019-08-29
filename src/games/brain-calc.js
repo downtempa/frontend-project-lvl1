@@ -5,12 +5,15 @@ const description = 'What is the result of the expression?';
 
 const showDescription = () => print.showDescription(description);
 
+const rangestartValue = 1;
+const rangeEndValue = 100;
+
 const showQuestion = () => {
   const operation = util.getRandomOperation(util.operationsArr);
   const operationSymbol = util.operationsMap[operation].symbol;
 
-  const a = util.getRandomInt(1, 100);
-  const b = util.getRandomInt(1, 100);
+  const a = util.getRandomInt(rangestartValue, rangeEndValue);
+  const b = util.getRandomInt(rangestartValue, rangeEndValue);
 
   const questionStr = `${a} ${operationSymbol} ${b}`;
   const operationResult = util.operationsMap[operation].method(a, b);

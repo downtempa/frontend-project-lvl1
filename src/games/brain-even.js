@@ -5,8 +5,11 @@ const description = 'Answer "yes" if number even, otherwise answer "no"';
 
 const showDescription = () => print.showDescription(description);
 
+const rangestartValue = 1;
+const rangeEndValue = 100;
+
 const showQuestion = () => {
-  const question = util.getRandomInt(1, 100);
+  const question = util.getRandomInt(rangestartValue, rangeEndValue);
   print.showQuestion(question);
   return question;
 };
