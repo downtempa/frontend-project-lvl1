@@ -33,6 +33,28 @@ const getGreaterCommonDivisor = (a, b) => {
   return getGreaterCommonDivisor(b, a % b);
 };
 
+const progressionLength = 10;
+
+const transformersArr = ['makeDouble'];
+const transformersMap = {
+  makeDouble: (a) => a * 2,
+};
+
+const makeProgression = (f) => (initial) => {
+  const iter = (current, acc) => {
+    if (acc.length === progressionLength) {
+      return acc;
+    }
+
+    const newAcc = [...acc, current];
+    const transformed = f(current);
+
+    return iter(transformed, newAcc);
+  };
+
+  return iter(initial, []);
+};
+
 export {
   isEven,
   getRandomInt,
@@ -41,4 +63,8 @@ export {
   operationsArr,
   operationsMap,
   getGreaterCommonDivisor,
+  transformersArr,
+  transformersMap,
+  makeProgression,
+  progressionLength,
 };
