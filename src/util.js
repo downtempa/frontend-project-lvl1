@@ -2,6 +2,22 @@ import _ from 'lodash';
 
 const isEven = (number) => number % 2 === 0;
 
+const isPrime = (number, divisor = 2) => {
+  if (number <= 2) {
+    return number === 2;
+  }
+
+  if (number % divisor === 0) {
+    return false;
+  }
+
+  if ((divisor * divisor) > number) {
+    return true;
+  }
+
+  return isPrime(number, divisor + 1);
+};
+
 const getRandomInt = (min, max) => _.random(min, max);
 
 const operationsArr = ['multiply', 'addition', 'subtract'];
@@ -57,6 +73,7 @@ const makeProgression = (f) => (initial) => {
 
 export {
   isEven,
+  isPrime,
   getRandomInt,
   getExpression,
   getRandomOperation,

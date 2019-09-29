@@ -2,6 +2,7 @@ import * as brainEven from './games/brain-even';
 import * as brainCalc from './games/brain-calc';
 import * as brainGCD from './games/brain-gcd';
 import * as brainProgression from './games/brain-progression';
+import * as brainPrime from './games/brain-prime';
 import * as print from './print';
 
 const playTimes = 3;
@@ -11,6 +12,7 @@ const gameHandlers = {
   'brain-calc': brainCalc,
   'brain-gcd': brainGCD,
   'brain-progression': brainProgression,
+  'brain-prime': brainPrime,
 };
 
 const getGame = (gameName) => gameHandlers[gameName];
